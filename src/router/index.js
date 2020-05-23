@@ -1,27 +1,64 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
+// import register from '@/views/register'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/register',
+    name:'register',
+    component:() => import ('@/views/register')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/Login',
+    name:'Login',
+    component:() => import ('@/views/Login')
+  },
+  {
+    path:'/userinfo',
+    name:'userinfo',
+    component:() => import('@/views/userinfo'),
+    meta:{
+      istoken:true
+    }
+  },
+  {
+    path:'/edit',
+    name:'edit',
+    component:() => import('@/views/edit'),
+    meta:{
+      istoken:true
+    }
+  },
+  {
+    path:'/',
+    redirect:'/home'
+  },
+  {
+    path:'/home',
+    name:'home',
+    component:() => import('@/views/Home'),
+  },
+  {
+    path:'/article/:id',
+    name:'article',
+    component:() => import('@/views/Article')
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode:'history'
+})
+
+router.beforeEach((to,from,next) => {
+  if (to.meta.istoken===true&&!localStorage.getItem('token')&&!localStorage.getItem('id')) {
+    router.push('/login');
+    return;
+  }
+  next();
 })
 
 export default router
