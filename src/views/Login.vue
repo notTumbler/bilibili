@@ -47,8 +47,6 @@ export default {
       if (this.model.username && this.model.password) {
         const res = await this.$http.post("/login", this.model);
         this.$toast(res.data.msg);
-        console.log(res
-        );
         
         if (res.data.code == 301 || res.data.code == 302) {
           return;

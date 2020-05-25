@@ -40,11 +40,20 @@ Vue.use(VueRouter)
     path:'/home',
     name:'home',
     component:() => import('@/views/Home'),
+    meta:{
+      keepalive:true
+    }
   },
   {
     path:'/article/:id',
     name:'article',
     component:() => import('@/views/Article')
+  },
+  {
+    path:'/editcategory',
+    name:'editcategory',
+    component:() => import('@/views/editCategory')
+    
   }
 ]
 

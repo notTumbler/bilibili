@@ -1,7 +1,7 @@
 <template>
   <div class="Navbar">
     <div class="logo">
-      <img src="@/assets/bililogo.jpg" alt="">
+      <img src="@/assets/bililogo.jpg" alt />
     </div>
     <div>
       <p>
@@ -10,8 +10,8 @@
       </p>
     </div>
     <div>
-      <img :src="imgUrl" alt="" v-if="imgUrl">
-      <img src="@/assets/logo.png" alt="" v-else>
+      <img :src="imgUrl" alt v-if="imgUrl" />
+      <img src="@/assets/logo.png"  v-else @click="$router.push('/login')" />
       <p>下载App</p>
     </div>
   </div>
@@ -20,17 +20,18 @@
 <script>
 export default {
   name: "Navbar",
-  props:['userInfo'],
+  props: ["userInfo"],
   data() {
     return {
-      imgUrl:''
+      imgUrl: ""
     };
   },
   async mounted() {
+    if (localStorage.getItem("token")) {
       const res = await this.$http.get("/user/" + localStorage.getItem("id"));
       this.imgUrl = res.data[0].user_img;
-  },
-  
+    }
+  }
 };
 </script>
 
@@ -49,44 +50,44 @@ export default {
       height: 100%;
     }
   }
-  div:nth-child(2){
+  div:nth-child(2) {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    p{
+    p {
       position: relative;
       background-color: #f4f4f4;
-      // 
+      //
       height: 7.222vw;
       width: 85%;
       border-radius: 4.167vw;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      span{
+      span {
         font-size: 2.778vw;
         color: #666;
       }
-      .ipt-icon{
+      .ipt-icon {
         position: absolute;
         left: 2.222vw;
         top: 50%;
-        transform: translate(0,-45%);
+        transform: translate(0, -45%);
       }
     }
   }
-  div:nth-child(3){
+  div:nth-child(3) {
     display: flex;
     justify-content: center;
     align-items: center;
-    img{
+    img {
       height: 8.333vw;
       width: 8.333vw;
       border-radius: 50%;
       border: 0.278vw solid #cccccc;
     }
-    p{
+    p {
       padding: 2.222vw;
       background-color: #fb7299;
       color: white;

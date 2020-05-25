@@ -1,5 +1,5 @@
 <template>
-  <div class="Detail" @click="$router.push(`/article/${detailitem.id}`)">
+  <div class="Detail" @click="pathPush">
     <div class="detailItem">
       <div class="imgparent">
         <img :src="detailitem.img" style="width:100%;height:100%" />
@@ -25,10 +25,21 @@ export default {
   props: ["detailitem"],
   data() {
     return {};
-  }
+  },
+  methods: {
+    pathPush(){
+      // 点击同一个视频链接两次就会报错，所以先判断
+      if (this.$route.path != `/article/${this.detailitem.id}`) {
+        this.$router.push(`/article/${this.detailitem.id}`)
+      }else{
+        this.$toast('努力加载ing…');
+      }
+      
+    }
+  },
 };
 </script>
-Detail
+
 <style scoped lang="less" >
 .detailItem {
   p {
