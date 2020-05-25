@@ -5,65 +5,69 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
-    path:'/register',
-    name:'register',
-    component:() => import ('@/views/register')
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/register')
   },
   {
-    path:'/Login',
-    name:'Login',
-    component:() => import ('@/views/Login')
+    path: '/Login',
+    name: 'Login',
+    component: () => import('@/views/Login')
   },
   {
-    path:'/userinfo',
-    name:'userinfo',
-    component:() => import('@/views/userinfo'),
-    meta:{
-      istoken:true
+    path: '/userinfo',
+    name: 'userinfo',
+    component: () => import('@/views/userinfo'),
+    meta: {
+      istoken: true
     }
   },
   {
-    path:'/edit',
-    name:'edit',
-    component:() => import('@/views/edit'),
-    meta:{
-      istoken:true
+    path: '/edit',
+    name: 'edit',
+    component: () => import('@/views/edit'),
+    meta: {
+      istoken: true
     }
   },
   {
-    path:'/',
-    redirect:'/home'
+    path: '/',
+    redirect: '/home'
   },
   {
-    path:'/home',
-    name:'home',
-    component:() => import('@/views/Home'),
-    meta:{
-      keepalive:true
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/Home'),
+    meta: {
+      keepalive: true
     }
   },
   {
-    path:'/article/:id',
-    name:'article',
-    component:() => import('@/views/Article')
+    path: '/article/:id',
+    name: 'article',
+    component: () => import('@/views/Article')
   },
   {
-    path:'/editcategory',
-    name:'editcategory',
-    component:() => import('@/views/editCategory')
-    
-  }
+    path: '/editcategory',
+    name: 'editcategory',
+    component: () => import('@/views/editCategory')
+  },
+    {
+      path:'/search',
+      name:'search',
+      component:() => import('@/views/Search')
+    }
 ]
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  mode: 'history'
 })
 
-router.beforeEach((to,from,next) => {
-  if (to.meta.istoken===true&&!localStorage.getItem('token')&&!localStorage.getItem('id')) {
+router.beforeEach((to, from, next) => {
+  if (to.meta.istoken === true && !localStorage.getItem('token') && !localStorage.getItem('id')) {
     router.push('/login');
     return;
   }

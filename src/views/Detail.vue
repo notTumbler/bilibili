@@ -27,16 +27,15 @@ export default {
     return {};
   },
   methods: {
-    pathPush(){
+    pathPush() {
       // 点击同一个视频链接两次就会报错，所以先判断
       if (this.$route.path != `/article/${this.detailitem.id}`) {
-        this.$router.push(`/article/${this.detailitem.id}`)
-      }else{
-        this.$toast('努力加载ing…');
+        this.$router.push(`/article/${this.detailitem.id}`);
+      } else {
+        this.$toast("努力加载ing…");
       }
-      
     }
-  },
+  }
 };
 </script>
 
@@ -53,16 +52,16 @@ export default {
     display: flex;
     justify-content: space-between;
     position: absolute;
-    left: 10px;
-    bottom: 8px;
+    left: 2.778vw;
+    bottom: 2.222vw;
     .bottom-left {
       display: flex;
       justify-content: space-between;
       align-items: center;
       span {
-        margin: 0 2px;
+        margin: 0 0.556vw;
         &:nth-child(2) {
-          font-size: 12px;
+          font-size: 3.333vw;
           color: #666666;
         }
       }
@@ -72,10 +71,10 @@ export default {
       justify-content: space-between;
       align-items: center;
       span {
-        margin-right: 4px;
-        font-size: 12px;
+        margin-right: 1.111vw;
+        font-size: 3.333vw;
         &:nth-child(2) {
-          font-size: 12px;
+          font-size: 3.333vw;
           color: #666666;
         }
       }

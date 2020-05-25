@@ -5,7 +5,7 @@
     </div>
 
     <div class="uploadfile">
-      <van-uploader class="uploadImg" preview-size="360px" :after-read="afterRead" />
+      <van-uploader class="uploadImg" preview-size="100vw" :after-read="afterRead" />
       <editBanner left="头像">
         <img :src="model.user_img" slot="right" v-if="model.user_img" />
         <img src="@/assets/logo.png" slot="right" v-else />
@@ -22,9 +22,9 @@
       <a href="javascript:;" slot="right">{{model.gender===1?'男':'女'}}</a>
     </editBanner>
     <editBanner left="出生日期"></editBanner>
-    <editBanner left="个性签名"  @bannerClick="textshow=true">
+    <editBanner left="个性签名" @bannerClick="textshow=true">
       <a href="javascript:;" slot="right">点击编辑</a>
-      <div class="geqian" slot="bottom"> {{model.user_desc}}</div>
+      <div class="geqian" slot="bottom">{{model.user_desc}}</div>
     </editBanner>
     <div style="margin:0,padding:0"></div>
 
@@ -123,8 +123,8 @@ export default {
       this.gendershow = false;
     },
     // 返回个人中心
-    editback(){
-      this.$router.push('/userinfo');
+    editback() {
+      this.$router.push("/userinfo");
     }
   },
   components: {
@@ -154,20 +154,20 @@ export default {
       opacity: 0;
     }
   }
-  .geqian{
-  background-color: rgba(255, 255, 255, .8);
-  // width: 100%;
-  padding:  16px ;
+  .geqian {
+    background-color: rgba(255, 255, 255, 0.8);
+    // width: 100%;
+    padding: 4.444vw;
   }
-  .editback{
-    margin-top: 40px ;
+  .editback {
+    margin-top: 11.111vw;
     background-color: pink;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 5vw;
-    padding: 14px 0;
+    padding: 3.889vw 0;
   }
 }
 </style>

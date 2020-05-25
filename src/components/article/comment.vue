@@ -65,8 +65,8 @@ export default {
       }
       return fn(null);
     },
-    publishClick(id){
-      this.$emit('publishClick',id);
+    publishClick(id) {
+      this.$emit("publishClick", id);
     }
   }
 };
@@ -74,7 +74,7 @@ export default {
 
 <style scoped  lang="less" >
 .comment {
-  padding: 5px 5px;
+  padding: 1.389vw 1.389vw;
   .comment_top {
     display: flex;
     justify-content: space-between;
@@ -84,12 +84,12 @@ export default {
       justify-content: center;
       align-items: center;
       img {
-        width: 35px;
-        height: 35px;
+        width: 9.722vw;
+        height: 9.722vw;
         border-radius: 50%;
       }
       span {
-        margin-left: 8px;
+        margin-left: 2.222vw;
         color: purple;
       }
     }
@@ -98,18 +98,18 @@ export default {
     }
   }
   .comment_bottom {
-    margin-top: 5px;
+    margin-top: 1.389vw;
     div {
       display: flex;
       justify-content: space-between;
       p:nth-child(1) {
-        padding: 0 15px;
-        font-size: 14px;
+        padding: 0 4.167vw;
+        font-size: 3.889vw;
         color: #555;
       }
-      p:nth-child(2){
+      p:nth-child(2) {
         color: palevioletred;
-        margin-right: 10px;
+        margin-right: 2.778vw;
       }
     }
   }

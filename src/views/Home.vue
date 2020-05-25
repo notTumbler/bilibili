@@ -27,6 +27,8 @@
       </van-tabs>
       <span @click="$router.push('/editCategory')" class="shezhi iconfont icon-shezhi"></span>
     </div>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -51,10 +53,10 @@ export default {
   // 因为先前给主页设置了keepalive,所以离开home页面的时候HOME页面并不会被销毁，于是当我们从选择栏目跳转回来的时候，页面不会改变，因此，选用这个钩子函数监听页面，并于里面渲染数据
   activated() {
     if (localStorage.getItem("newCat")) {
-        let newCat = JSON.parse(localStorage.getItem("newCat"));
-        this.changeCategory(newCat);
-        this.selectArticle();
-      }
+      let newCat = JSON.parse(localStorage.getItem("newCat"));
+      this.changeCategory(newCat);
+      this.selectArticle();
+    }
   },
   methods: {
     // 获取分类栏目数据
@@ -86,20 +88,20 @@ export default {
       const categoryitem = this.categoryItem();
       // categoryitem没在data中，这个请求是异步的，如果category没有值，那么有些属性就被显示为undefined,除了下面这种方法，还可以在某个标签上加上v-if="category"的判断条件
       if (categoryitem) {
-         const res = await this.$http.get("/detail/" + categoryitem._id, {
-        params: {
-          page: categoryitem.page,
-          pagesize: categoryitem.pagesize
+        const res = await this.$http.get("/detail/" + categoryitem._id, {
+          params: {
+            page: categoryitem.page,
+            pagesize: categoryitem.pagesize
+          }
+        });
+
+        // 这个函数里的categoryitem就相当于刚改造完的数据里的被点击项
+        // 防止新加载的数据覆盖掉之前的数据 不用categotyitem.list=res.data;
+        categoryitem.list.push(...res.data);
+        categoryitem.loading = false;
+        if (res.data.length < categoryitem.pagesize) {
+          categoryitem.finished = true;
         }
-      });
-      
-      // 这个函数里的categoryitem就相当于刚改造完的数据里的被点击项
-      // 防止新加载的数据覆盖掉之前的数据 不用categotyitem.list=res.data;
-      categoryitem.list.push(...res.data);
-      categoryitem.loading = false;
-      if (res.data.length < categoryitem.pagesize) {
-        categoryitem.finished = true;
-      }
       }
     },
     // 通过下标获取被点击的部分的数据 点了哪个就是哪个
@@ -129,12 +131,12 @@ export default {
     position: relative;
     .shezhi {
       position: absolute;
-      right: 0px;
-      top: 7.5px;
+      right: 0vw;
+      top: 2.083vw;
       background-color: white;
       z-index: 100;
-      padding: 4px 5px;
-      font-size: 19px;
+      padding: 1.111vw 1.389vw;
+      font-size: 5.278vw;
     }
   }
 }
@@ -144,7 +146,7 @@ export default {
   justify-content: space-around;
   .detailitem {
     width: 45%;
-    margin: 5px 0;
+    margin: 1.389vw 0;
   }
 }
 </style>

@@ -6,7 +6,7 @@
         <slot name="right"></slot>
       </span>
     </div>
-    <div >
+    <div>
       <slot name="bottom"></slot>
     </div>
   </div>
@@ -41,6 +41,4 @@ export default {
     color: #666;
   }
 }
-
-
 </style>

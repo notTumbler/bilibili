@@ -2,7 +2,7 @@
   <div class="userDetail">
     <div>
       <div class="user_img">
-        <img :src="userInfo.user_img"  v-if="userInfo.user_img" />
+        <img :src="userInfo.user_img" v-if="userInfo.user_img" />
         <img src="@/assets/005.jpg" v-else />
       </div>
       <div class="user_edit">
@@ -21,8 +21,7 @@
           </p>
         </div>
         <div class="user_edit_under">
-          <div class="bianjiziliao"
-          @click="$router.push('/edit')">编辑资料</div>
+          <div class="bianjiziliao" @click="$router.push('/edit')">编辑资料</div>
         </div>
       </div>
     </div>
@@ -38,7 +37,7 @@
 <script>
 export default {
   name: "userDetail",
-  props:['userInfo'],
+  props: ["userInfo"],
   data() {
     return {};
   },
@@ -101,14 +100,14 @@ export default {
       }
     }
   }
-  > div:nth-child(2){
-    h4{
+  > div:nth-child(2) {
+    h4 {
       margin: 0.556vw;
       font-size: 4.444vw;
       font-weight: 600;
-      color: rgba(128, 0, 128,.7);
+      color: rgba(128, 0, 128, 0.7);
     }
-    p{
+    p {
       padding: 1.389vw 0;
       color: #aaaaaa;
       font-size: 3.889vw;

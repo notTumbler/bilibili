@@ -14,8 +14,12 @@
               <span>{{model.name}}</span>
             </div>
             <div @click="guanzhuClick">
-              <span class="iconfont" :class="guanzhuactive?'icon-guanzhuer guanzhuColor':'icon-guanzhu'"><span class="guanzhu">关注</span></span>
-              
+              <span
+                class="iconfont"
+                :class="guanzhuactive?'icon-guanzhuer guanzhuColor':'icon-guanzhu'"
+              >
+                <span class="guanzhu">关注</span>
+              </span>
             </div>
           </div>
           <div class="two">
@@ -190,21 +194,21 @@ export default {
     async guanzhuClick() {
       if (localStorage.getItem("token")) {
         const res = await this.$http.post(
-          "/sub_scription/" + localStorage.getItem("id"),{
+          "/sub_scription/" + localStorage.getItem("id"),
+          {
             sub_id: this.model.userid
-          });
-          
-          
+          }
+        );
+
         if (res.data.msg == "关注成功") {
           this.guanzhuactive = true;
-        }else{
+        } else {
           this.guanzhuactive = false;
         }
         this.$toast(res.data.msg);
       }
-
     },
-     // 进入页面之后获取该用户是否被关注
+    // 进入页面之后获取该用户是否被关注
     async guanzhuInit() {
       if (localStorage.getItem("token")) {
         const res = await this.$http.get(
@@ -218,7 +222,7 @@ export default {
         // console.log(res);
         this.guanzhuactive = res.data.success;
       }
-    },
+    }
   }
 };
 </script>
@@ -234,29 +238,28 @@ export default {
       width: 100%;
     }
     .detailinfotext {
-      padding: 15px;
+      padding: 4.167vw;
       .one {
         display: flex;
         justify-content: space-between;
-        
-          .span{
-            margin: 0 10px 0 0;
-            color: #fb7299;
-            background-color: #f4f4f4;
-            border-radius: 4px;
-            text-align: center;
-          }
-          .guanzhu{
-            margin-left: 4px;
-          }
-        
+
+        .span {
+          margin: 0 2.778vw 0 0;
+          color: #fb7299;
+          background-color: #f4f4f4;
+          border-radius: 1.111vw;
+          text-align: center;
+        }
+        .guanzhu {
+          margin-left: 1.111vw;
+        }
       }
       .two {
         display: flex;
         color: #666;
         .two-one {
           flex: 10;
-          padding: 8px 0;
+          padding: 2.222vw 0;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -279,9 +282,9 @@ export default {
           display: flex;
           align-items: center;
           div {
-            margin-right: 15px;
+            margin-right: 4.167vw;
             span {
-              padding-right: 4px;
+              padding-right: 1.111vw;
             }
           }
         }
@@ -289,7 +292,7 @@ export default {
           flex: 3.5;
           div {
             .dandu {
-              padding-right: 4px;
+              padding-right: 1.111vw;
             }
           }
         }
@@ -304,14 +307,13 @@ export default {
   justify-content: space-around;
   .detailitem {
     width: 45%;
-    margin: 5px 0;
+    margin: 1.389vw 0;
   }
 }
 .activeColor {
   color: #fb7299;
 }
-.guanzhuColor{
+.guanzhuColor {
   color: #fb7299;
 }
-
 </style>

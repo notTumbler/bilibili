@@ -23,7 +23,6 @@
         </div>
       </div>
       <cmResponse :commentChild="item.child"></cmResponse>
-
     </div>
   </div>
 </template>
@@ -41,7 +40,7 @@ export default {
 
 <style scoped lang="less" >
 .cmResponse {
-  padding: 10px 20px;
+  padding: 2.778vw 5.556vw;
 
   .comment_top {
     display: flex;
@@ -52,12 +51,12 @@ export default {
       justify-content: center;
       align-items: center;
       img {
-        width: 35px;
-        height: 35px;
+        width: 9.722vw;
+        height: 9.722vw;
         border-radius: 50%;
       }
       span {
-        margin-left: 8px;
+        margin-left: 2.222vw;
         color: purple;
       }
     }
@@ -66,14 +65,13 @@ export default {
     }
   }
   .comment_bottom {
-    margin-top: 5px;
+    margin-top: 1.389vw;
     background-color: #f4f4f4;
     p {
-      padding: 0 15px;
-      font-size: 14px;
+      padding: 0 4.167vw;
+      font-size: 3.889vw;
       color: #555;
     }
   }
-
 }
 </style>

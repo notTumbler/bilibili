@@ -1,17 +1,17 @@
 <template>
   <div class="Navbar">
-    <div class="logo">
-      <img src="@/assets/bililogo.jpg" alt />
+    <div class="logo" @click="$router.push('/home')" >
+      <img src="@/assets/bililogo.jpg"  />
     </div>
-    <div>
+    <div @click="$router.push('/search')">
       <p>
         <span>请输入搜索内容</span>
         <van-icon class="ipt-icon" name="search" />
       </p>
     </div>
     <div>
-      <img :src="imgUrl" alt v-if="imgUrl" />
-      <img src="@/assets/logo.png"  v-else @click="$router.push('/login')" />
+      <img :src="imgUrl" alt v-if="imgUrl" @click="$router.push('/userinfo')" />
+      <img src="@/assets/logo.png" v-else @click="$router.push('/login')" />
       <p>下载App</p>
     </div>
   </div>
